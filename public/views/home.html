@@ -1,0 +1,17 @@
+<h1>Home Page</h1><a href="" ng-click="logout()">Logout</a>
+Search: <input ng-model="doctorname" type="text" name="search" placeholder="Doctor's Name">
+Specification :
+<select ng-model="specification" ng-options="specification.sp_name for specification in specifications">
+    <option value="">choose specification</option>
+</select>
+Branch :
+<select ng-model="branch" ng-options="branch.b_name for branch in branchs">
+    <option value="">choose branch</option>
+</select>
+<button ng-click="refesh()">Refresh</button>
+
+<div ng-repeat="doctor in doctors | filter:{d_lname: doctorname, sp_name:specification.sp_name, b_name:branch.b_name}" style="border-bottom:2px solid #e6e6e6;">
+	<h3>{{doctor.d_fname}} {{doctor.d_mname}} {{doctor.d_lname}}</h3>
+	<h4>{{doctor.sp_name}} - {{doctor.sp_desc}}</h4>
+	<h5>{{doctor.b_name}} - {{doctor.b_desc}}</h5>
+</div>

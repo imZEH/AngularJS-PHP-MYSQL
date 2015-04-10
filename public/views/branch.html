@@ -1,0 +1,25 @@
+<h1> Branch Page</h1>
+			<input ng-model="branch.b_id" type="hidden" name="id" >
+Branch : <input ng-model="branch.b_name" type="text" name="brachname">
+Description : <textarea ng-model="branch.b_desc" name="description" id="description" cols="30" rows="10"></textarea>
+<button ng-click="save()">Save</button>
+
+
+<table style="padding-top:20px;">
+	<th width="20">ID</th>
+	<th width="100">Name</th>
+	<th width="100">Desc</th>
+	<th width="10"></th>
+	<tr ng-repeat="branch in response">
+		<td>{{branch.b_id}}</td>
+		<td>{{branch.b_name}}</td>
+		<td>{{branch.b_desc}}</td>
+		<td><a ng-click="get(branch.b_id)" href="">edit</a></td>
+		<td><a ng-click="delete(branch.b_id)" href="">Delete</a></td>
+	</tr>
+</table>
+<div class="col-md-12" ng-show="response.length == 0">
+    <div class="col-md-12">
+        <h4>No Branch found</h4>
+    </div>
+</div>

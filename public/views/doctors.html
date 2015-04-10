@@ -1,0 +1,37 @@
+<h1> Doctors Page</h1>
+<input ng-model="doctor.d_id" type="hidden" name="id" >
+First Name :<input ng-model="doctor.d_fname" type="text" name="firstname">
+Middle Name :<input ng-model="doctor.d_mname" type="text" name="middlename">
+Last Name :<input ng-model="doctor.d_lname" type="text" name="lastname">
+Schedule :<input ng-model="doctor.d_sched" type="text" name="schedule">
+Specification :
+<select class="form-control"ng-model="doctor.sp_id" >
+	<option ng-repeat="specification in specifications" value="{{specification.sp_id}}" ng-selected="doctor.sp_id==specification.sp_id">{{specification.sp_name}}</option>
+</select>
+Branch :
+<select class="form-control"ng-model="doctor.b_id" >
+	<option ng-repeat="branch in branchs" value="{{branch.b_id}}" ng-selected="doctor.b_id==branch.b_id">{{branch.b_name}}</option>
+</select>
+<button ng-click="save()">Save</button>
+
+
+<table style="padding-top:20px;">
+	<th width="20">ID</th>
+	<th width="100">Name</th>
+	<th width="100">Specification</th>
+	<th width="100">Branch</th>
+	<th width="10"></th>
+	<tr ng-repeat="doctor in response">
+		<td>{{doctor.d_id}}</td>
+		<td>{{doctor.d_fnme}} {{doctor.d_mname}} {{doctor.d_lname}}</td>
+		<td>{{doctor.sp_name}}</td>
+		<td>{{doctor.b_name}}</td>
+		<td><a ng-click="get(doctor.d_id)" href="">edit</a></td>
+		<td><a ng-click="delete(doctor.d_id)" href="">Delete</a></td>
+	</tr>
+</table>
+<div class="col-md-12" ng-show="response.length == 0">
+    <div class="col-md-12">
+        <h4>No Doctor found</h4>
+    </div>
+</div>

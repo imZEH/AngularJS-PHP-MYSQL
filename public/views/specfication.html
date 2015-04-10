@@ -1,0 +1,25 @@
+<h1>Specification Page</h1>
+<input ng-model="specification.sp_id" type="hidden" name="id" >
+Specification Name : <input ng-model="specification.sp_name" type="text" name="specificationname">
+Description : <textarea ng-model="specification.sp_desc" name="description" id="description" cols="30" rows="10"></textarea>
+<button ng-click="save()">Save</button>
+
+
+<table style="padding-top:20px;">
+	<th width="20">ID</th>
+	<th width="100">Name</th>
+	<th width="100">Desc</th>
+	<th width="10"></th>
+	<tr ng-repeat="specification in response">
+		<td>{{specification.sp_id}}</td>
+		<td>{{specification.sp_name}}</td>
+		<td>{{specification.sp_desc}}</td>
+		<td><a ng-click="get(specification.sp_id)" href="">edit</a></td>
+		<td><a ng-click="delete(specification.sp_id)" href="">Delete</a></td>
+	</tr>
+</table>
+<div class="col-md-12" ng-show="response.length == 0">
+    <div class="col-md-12">
+        <h4>No Specification found</h4>
+    </div>
+</div>
