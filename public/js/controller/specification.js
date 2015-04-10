@@ -4,16 +4,20 @@ var SpecificationCTRL = function($scope ,toaster,SpecificationFactory){
 	init();
 
 	$scope.save = function(){
-		if($scope.specification.sp_id === undefined){
-			SpecificationFactory.saveSpecification($scope.specification,function(data){
-				toaster.pop('success', "", data.msg);
-				init();
-			});
+		if($scope.specification.sp_name === undefined){
+			toaster.pop('error', "", "Specification Name is Required.");
 		}else{
-			SpecificationFactory.updateSpecification($scope.specification.sp_id,$scope.specification, function(data){
-				toaster.pop('success', "", data.msg);
-				init();
-			});
+			if($scope.specification.sp_id === undefined){
+				SpecificationFactory.saveSpecification($scope.specification,function(data){
+					toaster.pop('success', "", data.msg);
+					init();
+				});
+			}else{
+				SpecificationFactory.updateSpecification($scope.specification.sp_id,$scope.specification, function(data){
+					toaster.pop('success', "", data.msg);
+					init();
+				});
+			}
 		}
 	}
 

@@ -1,11 +1,13 @@
 'use strict';
 
-var loginCTRL = function($scope,$toaster,loginFactory){
+var loginCTRL = function($scope,toaster,loginFactory){
 	$scope.login = function(){
-		console.log($scope.user);
-
 		loginFactory.authUser($scope.user,function(data){
-			console.log(data);
+			if(data.status == 200){
+				toaster.pop('success', "", "Access Granted");
+			}else{
+				toaster.pop('error', "", "Invalid Username/Password");
+			}
 		});
 	}
 }

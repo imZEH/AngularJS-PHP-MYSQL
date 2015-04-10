@@ -7,7 +7,7 @@ var DoctorFactory = function($http){
 		$http.post('php/classes/insertDoctor',data).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -15,7 +15,7 @@ var DoctorFactory = function($http){
 		$http.post('php/classes/updateDoctor', {d_id:id, doctor:doctor}).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -23,7 +23,7 @@ var DoctorFactory = function($http){
 		$http.get('php/classes/doctor?d_id='+id).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -31,7 +31,7 @@ var DoctorFactory = function($http){
 		$http.get('php/classes/doctors').success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -39,7 +39,7 @@ var DoctorFactory = function($http){
 		$http.delete('php/classes/deleteDoctor?d_id='+id).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 

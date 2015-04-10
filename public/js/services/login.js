@@ -6,13 +6,12 @@ var loginFactory = function($http,$location,sessionFactory){
 
 	loginFactory.authUser = function(data,cb){
 		var $promise = $http.post('php/auth/login.php', data).success(function(data){
-			cb(data);
 		}).error(function(err){
 			cb(data);
 		});
 
 		$promise.then(function(msg){
-			console.log(msg);
+			cb(msg);
 			var uid=msg.data;
 			if(uid){
 				sessionFactory.set('uid',uid);

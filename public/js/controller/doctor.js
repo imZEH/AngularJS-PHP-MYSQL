@@ -4,17 +4,20 @@ var DoctorCTRL = function($scope ,toaster, DoctorFactory, SpecificationFactory, 
 	init();
 
 	$scope.save = function(){
-		console.log($scope.doctor);
-		if($scope.doctor.d_id === undefined){
-			DoctorFactory.saveDoctor($scope.doctor,function(data){
-				toaster.pop('success', "", data.msg);
-				init();
-			});
+		if($scope.doctor.d_fname === undefined || $scope.doctor.d_lname === undefined || $scope.doctor.d_mname === undefined && $scope.doctor.sp_id === undefined || $scope.doctor.b_id === undefined){
+			toaster.pop('error', "", "Some of the fields is empty.");
 		}else{
-			DoctorFactory.updateDoctor($scope.doctor.d_id,$scope.doctor, function(data){
-				toaster.pop('success', "", data.msg);
-				init();
-			});
+			if($scope.doctor.d_id === undefined){
+				DoctorFactory.saveDoctor($scope.doctor,function(data){
+					toaster.pop('success', "", data.msg);
+					init();
+				});
+			}else{
+				DoctorFactory.updateDoctor($scope.doctor.d_id,$scope.doctor, function(data){
+					toaster.pop('success', "", data.msg);
+					init();
+				});
+			}
 		}
 	}
 

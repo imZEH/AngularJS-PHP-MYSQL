@@ -4,16 +4,20 @@ var branchCTRL = function($scope ,toaster,BranchFactory){
 	init();
 
 	$scope.save = function(){
-		if($scope.branch.b_id === undefined){
-			BranchFactory.saveBranch($scope.branch,function(data){
-				toaster.pop('success', "", data.msg);
-				init();
-			});
+		if($scope.branch.b_name === undefined){
+			toaster.pop('error', "", "Branch Name is Required.");
 		}else{
-			BranchFactory.updateBranch($scope.branch.b_id,$scope.branch, function(data){
-				toaster.pop('success', "", data.msg);
-				init();
-			});
+			if($scope.branch.b_id === undefined){
+				BranchFactory.saveBranch($scope.branch,function(data){
+					toaster.pop('success', "", data.msg);
+					init();
+				});
+			}else{
+				BranchFactory.updateBranch($scope.branch.b_id,$scope.branch, function(data){
+					toaster.pop('success', "", data.msg);
+					init();
+				});
+			}
 		}
 	}
 

@@ -7,7 +7,7 @@ var BranchFactory = function($http){
 		$http.post('php/classes/insertBranch',data).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -23,7 +23,7 @@ var BranchFactory = function($http){
 		$http.get('php/classes/branch?b_id='+id).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -31,7 +31,7 @@ var BranchFactory = function($http){
 		$http.get('php/classes/branchs').success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -39,7 +39,7 @@ var BranchFactory = function($http){
 		$http.delete('php/classes/deleteBranch?b_id='+id).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 

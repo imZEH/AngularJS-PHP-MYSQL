@@ -7,7 +7,7 @@ var SpecificationFactory = function($http){
 		$http.post('php/classes/insertSpecification',data).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -15,7 +15,7 @@ var SpecificationFactory = function($http){
 		$http.post('php/classes/updateSpecification', {sp_id:id, specification:Specification}).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -23,7 +23,7 @@ var SpecificationFactory = function($http){
 		$http.get('php/classes/specification?sp_id='+id).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -31,7 +31,7 @@ var SpecificationFactory = function($http){
 		$http.get('php/classes/Specifications').success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
@@ -39,7 +39,7 @@ var SpecificationFactory = function($http){
 		$http.delete('php/classes/deleteSpecification?sp_id='+id).success(function(data){
 			cb(data);
 		}).error(function(err){
-			console.log('Error ...',err);
+			cb(err);
 		});
 	};
 
