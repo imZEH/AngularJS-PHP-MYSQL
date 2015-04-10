@@ -15,7 +15,7 @@ var config = function($routeProvider){
         	templateUrl: './public/views/home.html',
             controller: 'homeCTRL'
         })
-        .when('/specfication',{
+        .when('/specification',{
         	templateUrl: './public/views/specfication.html',
             controller: 'SpecificationCTRL'
         })
