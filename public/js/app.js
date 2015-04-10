@@ -36,7 +36,7 @@ angular
     .module('polymedic', ['toaster','ngSanitize','ngRoute', 'polymedic.controllers', 'polymedic.services'])
     .config(config)
     .run(function($rootScope, $location, loginFactory){
-        var routespermission=['/home'];  //route that require login
+        var routespermission=['/home','/specification','/branch','/doctors'];  //route that require login
         $rootScope.$on('$routeChangeStart', function(){
             if( routespermission.indexOf($location.path()) !=-1)
             {
