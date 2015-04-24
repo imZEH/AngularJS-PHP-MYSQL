@@ -2,5 +2,5 @@
 
 
 # First thing todo
-  npm install bower -g
-  bower install
+  - npm install bower -g
+  - bower install
