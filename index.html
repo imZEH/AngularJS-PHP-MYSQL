@@ -2,20 +2,26 @@
 <html ng-app="polymedic">
 <head>
 	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 	<title>Polymedic</title>
+    <link rel="stylesheet" href="public/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="public/bower_components/angularjs-toaster/toaster.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
-<body>
-	<toaster-container></toaster-container>
+<body cz-shortcut-listen="true">
+	<toaster-container toaster-options="{'position-class': 'toast-top-center'}"></toaster-container>
 	<div ng-view></div>
 
+    <link rel="stylesheet" href="public/bower_components/bootstrap/dist/js/bootstrap.min.js">
 
 	<script src="public/bower_components/angular/angular.min.js"></script>
     <script src="public/bower_components/angular-route/angular-route.min.js"></script>
     <script src="public/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="public/bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="public/bower_components/angularjs-toaster/toaster.min.js"></script>
-    
 	<script src="public/js/app.js"></script>
     
     <script src="public/js/controller/specification.js"></script>
