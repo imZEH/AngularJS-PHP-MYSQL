@@ -36,6 +36,8 @@ var DoctorCTRL = function($scope ,toaster, DoctorFactory, SpecificationFactory, 
 
 	function init(){
 		$scope.doctor = {};
+		$scope.currentPage = 1;
+    	$scope.pageSize = 10;
 		DoctorFactory.getAllDoctor(function(data){
 			$scope.response = data;
 		});

@@ -4,8 +4,10 @@ var homeCTRL = function($scope,$filter,DoctorFactory,SpecificationFactory,Branch
 
 	function init(){
 		$scope.doctors = {};
-		$scope.query = {}
-    	$scope.queryBy = '$'
+		$scope.query = {};
+    	$scope.queryBy = '$';
+    	$scope.currentPage = 1;
+    	$scope.pageSize = 10;
     	
 		DoctorFactory.getAllDoctor(function(data){
 			$scope.doctors = data;
@@ -30,6 +32,14 @@ var homeCTRL = function($scope,$filter,DoctorFactory,SpecificationFactory,Branch
 	$scope.logout=function(){
 		loginFactory.logout();
 	}
+
+
+}
+
+function OtherController($scope) {
+  $scope.pageChangeHandler = function(num) {
+    console.log('going to page ' + num);
+  };
 }
 
 polymedic.Controllers.controller('homeCTRL', ['$scope','$filter','DoctorFactory','SpecificationFactory','BranchFactory','loginFactory',homeCTRL]);

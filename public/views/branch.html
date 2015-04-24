@@ -5,21 +5,24 @@
 				<th width="20">ID</th>
 				<th width="100">Name</th>
 				<th width="100">Desc</th>
-				<th width="10"></th>
-				<tr ng-repeat="branch in response">
+				<th width="10">Actions</th>
+				<tr dir-paginate="branch in response | itemsPerPage: pageSize">
 					<td>{{branch.b_id}}</td>
 					<td>{{branch.b_name}}</td>
 					<td>{{branch.b_desc}}</td>
 					<td>
-						<a ng-click="get(branch.b_id)" href="">edit</a>
-						<a ng-click="delete(branch.b_id)" href="">Delete</a>
+						<a ng-click="get(branch.b_id)" href=""><i class="glyphicon glyphicon-pencil"></i></a>
+						<a ng-click="delete(branch.b_id)" href=""><i class="glyphicon glyphicon-remove"></i></a>
 					</td>
 				</tr>
 			</table>
 		</div>
-		<div class="col-md-12" ng-show="response.length == 0">
+		<div class="text-center">
+			<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="public/views/dirPagination.tpl.html"></dir-pagination-controls>
+		</div>
+		<div class="col-md-12" ng-show="response.length == 0" style="text-align:center;">
 			<div class="col-md-12">
-				<h4>No Branch found</h4>
+				<h4>Data not found.</h4>
 			</div>
 		</div>
 	</div>
@@ -36,5 +39,4 @@
 			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
 	</div>
-	
 </div>

@@ -234,7 +234,7 @@
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			$query="SELECT * FROM doctor d JOIN specification s ON s.sp_id = d.sp_id JOIN branch b ON b.b_id = d.b_id order by d.d_fname asc";
+			$query="SELECT * FROM doctor d JOIN specification s ON s.sp_id = d.sp_id JOIN branch b ON b.b_id = d.b_id order by d.d_id asc";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){

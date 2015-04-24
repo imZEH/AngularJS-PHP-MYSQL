@@ -36,6 +36,8 @@ var branchCTRL = function($scope ,toaster,BranchFactory){
 
 	function init(){
 		$scope.branch = {};
+		$scope.currentPage = 1;
+    	$scope.pageSize = 10;
 		BranchFactory.getAllBranch(function(data){
 			$scope.response = data;
 

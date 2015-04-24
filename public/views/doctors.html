@@ -1,37 +1,66 @@
-<h1> Doctors Page</h1>
-<input ng-model="doctor.d_id" type="hidden" name="id" >
-First Name :<input ng-model="doctor.d_fname" type="text" name="firstname">
-Middle Name :<input ng-model="doctor.d_mname" type="text" name="middlename">
-Last Name :<input ng-model="doctor.d_lname" type="text" name="lastname">
-Schedule :<input ng-model="doctor.d_sched" type="text" name="schedule">
-Specification :
-<select class="form-control"ng-model="doctor.sp_id" >
-	<option ng-repeat="specification in specifications" value="{{specification.sp_id}}" ng-selected="doctor.sp_id==specification.sp_id">{{specification.sp_name}}</option>
-</select>
-Branch :
-<select class="form-control"ng-model="doctor.b_id" >
-	<option ng-repeat="branch in branchs" value="{{branch.b_id}}" ng-selected="doctor.b_id==branch.b_id">{{branch.b_name}}</option>
-</select>
-<button ng-click="save()">Save</button>
-
-
-<table style="padding-top:20px;">
-	<th width="20">ID</th>
-	<th width="100">Name</th>
-	<th width="100">Specification</th>
-	<th width="100">Branch</th>
-	<th width="10"></th>
-	<tr ng-repeat="doctor in response">
-		<td>{{doctor.d_id}}</td>
-		<td>{{doctor.d_fnme}} {{doctor.d_mname}} {{doctor.d_lname}}</td>
-		<td>{{doctor.sp_name}}</td>
-		<td>{{doctor.b_name}}</td>
-		<td><a ng-click="get(doctor.d_id)" href="">edit</a></td>
-		<td><a ng-click="delete(doctor.d_id)" href="">Delete</a></td>
-	</tr>
-</table>
-<div class="col-md-12" ng-show="response.length == 0">
-    <div class="col-md-12">
-        <h4>No Doctor found</h4>
-    </div>
+<div class="row">
+	<div class="col-md-6 col-sm-offset-3">
+		<div class="table-responsive">
+			<table class="table">
+				<th width="20">ID</th>
+				<th width="100">Name</th>
+				<th width="100">Schedule</th>
+				<th width="100">Specification</th>
+				<th width="100">Branch</th>
+				<th width="10">Actions</th>
+				<tr dir-paginate="doctor in response | itemsPerPage: pageSize">
+					<td>{{doctor.d_id}}</td>
+					<td>{{doctor.d_fnme}} {{doctor.d_mname}} {{doctor.d_lname}}</td>
+					<td>{{doctor.d_sched}}</td>
+					<td>{{doctor.sp_name}}</td>
+					<td>{{doctor.b_name}}</td>
+					<td>
+						<a ng-click="get(doctor.d_id)" href=""><i class="glyphicon glyphicon-pencil"></i></a>
+						<a ng-click="delete(doctor.d_id)" href=""><i class="glyphicon glyphicon-remove"></i></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="text-center">
+			<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="public/views/dirPagination.tpl.html"></dir-pagination-controls>
+		</div>
+		<div class="col-md-12" ng-show="response.length == 0" style="text-align:center;">
+			<div class="col-md-12">
+				<h4>Data not found.</h4>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-md-offset-3">
+		<form ng-submit="save()">
+			<div class="form-group">
+				<label for="exampleInputEmail1">First Name</label>
+				<input ng-model="doctor.d_fname" type="text" name="firstname" class="form-control" placeholder="First Name">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Middle Name</label>
+				<input ng-model="doctor.d_mname" type="text" name="middlename" class="form-control" placeholder="Middle Name">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Last Name</label>
+				<input ng-model="doctor.d_lname" type="text" name="lastname" class="form-control" placeholder="Last Name">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Schedule</label>
+				<input ng-model="doctor.d_sched" type="text" name="schedule" class="form-control" placeholder="ex. 12:00 am- 12:00 pm">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Specification</label>
+				<select class="form-control" ng-model="doctor.sp_id" >
+					<option ng-repeat="specification in specifications" value="{{specification.sp_id}}" ng-selected="doctor.sp_id==specification.sp_id">{{specification.sp_name}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Branch</label>
+				<select class="form-control" ng-model="doctor.b_id" >
+					<option ng-repeat="branch in branchs" value="{{branch.b_id}}" ng-selected="doctor.b_id==branch.b_id">{{branch.b_name}}</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-success">Submit</button>
+		</form>
+	</div>
 </div>

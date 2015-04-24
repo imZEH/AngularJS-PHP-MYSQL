@@ -5,7 +5,7 @@ var polymedic = polymedic || {};
 polymedic.Controllers = angular.module('polymedic.controllers', []);
 polymedic.Services = angular.module('polymedic.services', []);
 
-var config = function($routeProvider){
+var config = function($routeProvider,paginationTemplateProvider){
 	$routeProvider
         .when('/', {
             templateUrl: './public/views/login.html',
@@ -33,7 +33,7 @@ var config = function($routeProvider){
 }
 
 angular
-    .module('polymedic', ['toaster','ngSanitize','ngRoute', 'polymedic.controllers', 'polymedic.services'])
+    .module('polymedic', ['angularUtils.directives.dirPagination','toaster','ngSanitize','ngRoute', 'polymedic.controllers', 'polymedic.services'])
     .config(config)
     .run(function($rootScope, $location, loginFactory){
         var routespermission=['/home','/specification','/branch','/doctors'];  //route that require login

@@ -36,6 +36,8 @@ var SpecificationCTRL = function($scope ,toaster,SpecificationFactory){
 
 	function init(){
 		$scope.specification = {};
+		$scope.currentPage = 1;
+    	$scope.pageSize = 10;
 		SpecificationFactory.getAllSpecification(function(data){
 			$scope.response = data;
 
