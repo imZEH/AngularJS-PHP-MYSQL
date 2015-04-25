@@ -1,6 +1,6 @@
 # AngularJS-PHP-MYSQL
 
-
-# First thing todo
+#Prerequisites
+  - install nodejs --> https://nodejs.org/
   - npm install bower -g
   - bower install
